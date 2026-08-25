@@ -1,13 +1,11 @@
-"""PySpark transformations for MLApp."""
-
 from pyspark.sql import DataFrame
 from pyspark.sql import functions as F
 
 
 def clean_data(df: DataFrame) -> DataFrame:
     """Clean transaction data."""
-    df = df.na.drop(how='any')
-    df = df.filter(df['amount'].isNotNull())
+    df = df.na.drop(how="any")
+    df = df.filter(df["amount"].isNotNull())
     return df
 
 

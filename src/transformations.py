@@ -6,7 +6,8 @@ from pyspark.sql import functions as F
 
 def clean_data(df: DataFrame) -> DataFrame:
     """Clean transaction data."""
-    df = df.filter(df["amount"] > 0)
+    df = df.na.drop(how='any')
+    df = df.filter(df['amount'].isNotNull())
     return df
 
 
